@@ -1,0 +1,47 @@
+@prefix :   <http://example.org/museum_kg/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Museum a owl:Class.
+:Worker a owl:Class.
+:Manager a owl:Class.
+:Guide a owl:Class.
+:Guard a owl:Class.
+:Exhibit a owl:Class.
+:Artist a owl:Class.
+
+:name a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:address a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:role a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:accessLevel a owl:DatatypeProperty;
+    rdfs:range xsd:integer.
+:yearlyProfit a owl:DatatypeProperty;
+    rdfs:range xsd:integer.
+:workAddress a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:exhibitType a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:artistName a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:hasTitle a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:preferredTitle a owl:DatatypeProperty;
+    rdfs:range xsd:string.
+:hasRating a owl:DatatypeProperty;
+    rdfs:range xsd:double.
+:exhibitCount a owl:DatatypeProperty;
+    rdfs:range xsd:integer.
+:museumCount a owl:DatatypeProperty;
+    rdfs:range xsd:integer.
+
+
+
+:worksAt a owl:ObjectProperty;
+    rdfs:domain :Worker;
+    rdfs:range :Museum.
+:displayedIn a owl:ObjectProperty;
+    rdfs:domain :Exhibit;
+    rdfs:range :Museum.
