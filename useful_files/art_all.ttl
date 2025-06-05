@@ -1,0 +1,574 @@
+@prefix ex: <http://example.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix geonames: <http://www.geonames.org/ontology#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/shacl#class
+sh:class rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#datatype
+sh:datatype rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#maxCount
+sh:maxCount rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#message
+sh:message rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#minCount
+sh:minCount rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#pattern
+sh:pattern rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl/dash#uniqueValueForClass
+<http://www.w3.org/ns/shacl/dash#uniqueValueForClass> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/artstate
+ex:artstate rdf:type owl:ObjectProperty ;
+            rdfs:domain ex:Art ;
+            rdfs:range ex:State ;
+            rdfs:label "Art State" .
+
+
+###  http://example.org/belongsToCategory
+ex:belongsToCategory rdf:type owl:ObjectProperty ;
+                     owl:inverseOf ex:hasCategory ;
+                     rdfs:domain ex:Art ,
+                                 ex:Event ;
+                     rdfs:range ex:ArtCategory ,
+                                ex:EventCategory ;
+                     rdfs:label "Belongs To Category" .
+
+
+###  http://example.org/eventat
+ex:eventat rdf:type owl:ObjectProperty ;
+           rdfs:domain ex:Location ;
+           rdfs:range ex:Event ;
+           rdfs:label "Event At" .
+
+
+###  http://example.org/eventon
+ex:eventon rdf:type owl:ObjectProperty ;
+           rdfs:domain ex:Calendar ;
+           rdfs:range ex:Event ;
+           rdfs:label "Event On" .
+
+
+###  http://example.org/eventstate
+ex:eventstate rdf:type owl:ObjectProperty ;
+              rdfs:domain ex:Event ;
+              rdfs:range ex:State ;
+              rdfs:label "Event State" .
+
+
+###  http://example.org/hasCategory
+ex:hasCategory rdf:type owl:ObjectProperty ;
+               rdfs:domain ex:ArtCategory ,
+                           ex:EventCategory ;
+               rdfs:range ex:Art ,
+                          ex:Event ;
+               rdfs:label "Has Category" .
+
+
+###  http://example.org/partOfTour
+ex:partOfTour rdf:type owl:ObjectProperty ;
+              rdfs:domain ex:Art ;
+              rdfs:range ex:Tour ;
+              rdfs:label "Part of Tour" .
+
+
+###  http://example.org/type
+ex:type rdf:type owl:ObjectProperty ;
+        rdfs:domain ex:Tour ;
+        rdfs:range ex:Type ;
+        rdfs:label "Type" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/address
+ex:address rdf:type owl:DatatypeProperty ;
+           rdfs:domain ex:Location ;
+           rdfs:range xsd:string ;
+           rdfs:label "Address" .
+
+
+###  http://example.org/area_di_download
+ex:area_di_download rdf:type owl:DatatypeProperty ;
+                    rdfs:domain ex:Art ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "AreaDownload" .
+
+
+###  http://example.org/artcatclassid
+ex:artcatclassid rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ex:ArtCategory ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Artcat Classid" .
+
+
+###  http://example.org/artcatname_it
+ex:artcatname_it rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ex:ArtCategory ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Artcat Name" .
+
+
+###  http://example.org/artclassid
+ex:artclassid rdf:type owl:DatatypeProperty ;
+              rdfs:domain ex:Art ;
+              rdfs:range xsd:string ;
+              rdfs:label "Art Class ID" .
+
+
+###  http://example.org/artdescr_it
+ex:artdescr_it rdf:type owl:DatatypeProperty ;
+               rdfs:domain ex:Art ;
+               rdfs:range xsd:string ;
+               rdfs:label "Art Description (IT)" .
+
+
+###  http://example.org/artimage_url
+ex:artimage_url rdf:type owl:DatatypeProperty ;
+                rdfs:domain ex:Art ;
+                rdfs:range xsd:string ;
+                rdfs:label "Art Image URL" .
+
+
+###  http://example.org/artname_it
+ex:artname_it rdf:type owl:DatatypeProperty ;
+              rdfs:domain ex:Art ;
+              rdfs:range xsd:string ;
+              rdfs:label "Art Name" .
+
+
+###  http://example.org/calendarclassid
+ex:calendarclassid rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ex:Calendar ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Calendar Class ID" .
+
+
+###  http://example.org/day
+ex:day rdf:type owl:DatatypeProperty ;
+       rdfs:domain ex:Calendar ;
+       rdfs:range xsd:date ;
+       rdfs:label "day" .
+
+
+###  http://example.org/duration
+ex:duration rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Tour ;
+            rdfs:range xsd:decimal ;
+            rdfs:label "Duration" .
+
+
+###  http://example.org/end_time
+ex:end_time rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Calendar ;
+            rdfs:range xsd:string ;
+            rdfs:label "EndTime" .
+
+
+###  http://example.org/eventcatclassid
+ex:eventcatclassid rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ex:EventCategory ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Eventcat Classid" .
+
+
+###  http://example.org/eventcatname_it
+ex:eventcatname_it rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ex:EventCategory ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Eventcat Name" .
+
+
+###  http://example.org/eventclassid
+ex:eventclassid rdf:type owl:DatatypeProperty ;
+                rdfs:domain ex:Event ;
+                rdfs:range xsd:string ;
+                rdfs:label "Event Class ID" .
+
+
+###  http://example.org/eventdescr_it
+ex:eventdescr_it rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ex:Event ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Event Description (IT)" .
+
+
+###  http://example.org/eventimage_url
+ex:eventimage_url rdf:type owl:DatatypeProperty ;
+                  rdfs:domain ex:Event ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Event Image URL" .
+
+
+###  http://example.org/eventname_it
+ex:eventname_it rdf:type owl:DatatypeProperty ;
+                rdfs:domain ex:Event ;
+                rdfs:range xsd:string ;
+                rdfs:label "Event Name" .
+
+
+###  http://example.org/geom
+ex:geom rdf:type owl:DatatypeProperty ;
+        rdfs:domain ex:Location ;
+        rdfs:range xsd:string ;
+        rdfs:label "Geometry" .
+
+
+###  http://example.org/geom_path
+ex:geom_path rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:Tour ;
+             rdfs:range xsd:string ;
+             rdfs:label "GeomPath" .
+
+
+###  http://example.org/kml_path
+ex:kml_path rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Tour ;
+            rdfs:range xsd:string ;
+            rdfs:label "KmlPath" .
+
+
+###  http://example.org/length
+ex:length rdf:type owl:DatatypeProperty ;
+          rdfs:domain ex:Tour ;
+          rdfs:range xsd:decimal ;
+          rdfs:label "Length" .
+
+
+###  http://example.org/locationclassid
+ex:locationclassid rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ex:Location ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Location Class ID" .
+
+
+###  http://example.org/num
+ex:num rdf:type owl:DatatypeProperty ;
+       rdfs:domain ex:Location ;
+       rdfs:range xsd:integer ;
+       rdfs:label "Number" .
+
+
+###  http://example.org/open_time
+ex:open_time rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:Art ;
+             rdfs:range xsd:string ;
+             rdfs:label "OpenTime" .
+
+
+###  http://example.org/proximity_area
+ex:proximity_area rdf:type owl:DatatypeProperty ;
+                  rdfs:domain ex:Tour ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Proximity" .
+
+
+###  http://example.org/start_time
+ex:start_time rdf:type owl:DatatypeProperty ;
+              rdfs:domain ex:Calendar ;
+              rdfs:range xsd:string ;
+              rdfs:label "StartTime" .
+
+
+###  http://example.org/statecode
+ex:statecode rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:State ;
+             rdfs:range xsd:string ;
+             rdfs:label "State code" .
+
+
+###  http://example.org/statename
+ex:statename rdf:type owl:DatatypeProperty ;
+             rdfs:domain ex:State ;
+             rdfs:range xsd:string ;
+             rdfs:label "State name" .
+
+
+###  http://example.org/tickets
+ex:tickets rdf:type owl:DatatypeProperty ;
+           rdfs:domain ex:Art ;
+           rdfs:range xsd:string ;
+           rdfs:label "Tickets" .
+
+
+###  http://example.org/tourclassid
+ex:tourclassid rdf:type owl:DatatypeProperty ;
+               rdfs:domain ex:Tour ;
+               rdfs:range xsd:string ;
+               rdfs:label "Tour Class ID" .
+
+
+###  http://example.org/tourdescr_it
+ex:tourdescr_it rdf:type owl:DatatypeProperty ;
+                rdfs:domain ex:Tour ;
+                rdfs:range xsd:string ;
+                rdfs:label "Tour Description (IT)" .
+
+
+###  http://example.org/tourimage_url
+ex:tourimage_url rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ex:Tour ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Tour Image URL" .
+
+
+###  http://example.org/tourname_it
+ex:tourname_it rdf:type owl:DatatypeProperty ;
+               rdfs:domain ex:Tour ;
+               rdfs:range xsd:string ;
+               rdfs:label "Tour Name" .
+
+
+###  http://example.org/typecode
+ex:typecode rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Type ;
+            rdfs:range xsd:string ;
+            rdfs:label "Type code" .
+
+
+###  http://example.org/typename
+ex:typename rdf:type owl:DatatypeProperty ;
+            rdfs:domain ex:Type ;
+            rdfs:range xsd:string ;
+            rdfs:label "Type name" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/Art
+ex:Art rdf:type owl:Class ;
+       owl:equivalentClass wd:Q570116 .
+
+
+###  http://example.org/ArtCategory
+ex:ArtCategory rdf:type owl:Class ;
+               rdfs:label "Art Category" .
+
+
+###  http://example.org/Calendar
+ex:Calendar rdf:type owl:Class ;
+            rdfs:label "Calendar" .
+
+
+###  http://example.org/Event
+ex:Event rdf:type owl:Class ;
+         owl:equivalentClass wd:Q1656682 ;
+         rdfs:label "Event" .
+
+
+###  http://example.org/EventCategory
+ex:EventCategory rdf:type owl:Class ;
+                 rdfs:label "Event Category" .
+
+
+###  http://example.org/Location
+ex:Location rdf:type owl:Class ;
+            rdfs:label "Location" .
+
+
+###  http://example.org/State
+ex:State rdf:type owl:Class ;
+         rdfs:label "State" .
+
+
+###  http://example.org/Tour
+ex:Tour rdf:type owl:Class .
+
+
+###  http://example.org/Type
+ex:Type rdf:type owl:Class ;
+        rdfs:label "Type" .
+
+
+###  http://www.w3.org/ns/shacl#NodeShape
+sh:NodeShape rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q1656682
+wd:Q1656682 rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q570116
+wd:Q570116 rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/Art
+ex:Art rdf:type owl:NamedIndividual ;
+       owl:sameAs schema:TouristAttraction .
+
+
+###  https://schema.org/TouristAttraction
+
+###  http://example.org/ArtShape
+ex:ArtShape rdf:type owl:NamedIndividual ,
+                     sh:NodeShape ;
+            sh:property [ sh:datatype xsd:string ;
+                          sh:maxCount 1 ;
+                          sh:minCount 1 ;
+                          sh:path ex:artclassid
+                        ] ,
+                        [ sh:datatype xsd:string ;
+                          sh:minCount 1 ;
+                          sh:path ex:artname_it
+                        ] ;
+            sh:targetClass ex:Art .
+
+
+###  http://example.org/CalendarShape
+ex:CalendarShape rdf:type owl:NamedIndividual ,
+                          sh:NodeShape ;
+                 sh:property [ sh:datatype xsd:string ;
+                               sh:message "End time must be in HH:MM format (00:00 - 23:59)." ;
+                               sh:path ex:end_time ;
+                               sh:pattern "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                             ] ,
+                             [ sh:datatype xsd:string ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:path ex:calendarclassid
+                             ] ,
+                             [ sh:datatype xsd:string ;
+                               sh:message "Start time must be in HH:MM format (00:00 - 23:59)." ;
+                               sh:path ex:start_time ;
+                               sh:pattern "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+                             ] ;
+                 sh:targetClass ex:Calendar .
+
+
+###  http://example.org/EventShape
+ex:EventShape rdf:type owl:NamedIndividual ,
+                       sh:NodeShape ;
+              sh:property [ sh:datatype xsd:string ;
+                            sh:maxCount 1 ;
+                            sh:minCount 1 ;
+                            sh:path ex:eventclassid ;
+                            <http://www.w3.org/ns/shacl/dash#uniqueValueForClass> ex:Event
+                          ] ,
+                          [ sh:datatype xsd:string ;
+                            sh:minCount 1 ;
+                            sh:path ex:eventname_it
+                          ] ,
+                          [ sh:class ex:Location ;
+                            sh:minCount 1 ;
+                            sh:path ex:eventat
+                          ] ;
+              sh:targetClass ex:Event .
+
+
+###  http://example.org/LocationShape
+ex:LocationShape rdf:type owl:NamedIndividual ,
+                          sh:NodeShape ;
+                 sh:property [ sh:datatype xsd:string ;
+                               sh:minCount 1 ;
+                               sh:path ex:address
+                             ] ,
+                             [ sh:datatype xsd:string ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:path ex:locationclassid
+                             ] ;
+                 sh:targetClass ex:Location .
+
+
+###  http://example.org/Tour
+ex:Tour rdf:type owl:NamedIndividual ;
+        owl:sameAs schema:TouristTrip .
+
+
+###  https://schema.org/TouristTrip
+
+###  http://example.org/TourShape
+ex:TourShape rdf:type owl:NamedIndividual ,
+                      sh:NodeShape ;
+             sh:property [ sh:datatype xsd:string ;
+                           sh:minCount 1 ;
+                           sh:path ex:tourname_it
+                         ] ,
+                         [ sh:datatype xsd:string ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path ex:tourclassid
+                         ] ;
+             sh:targetClass ex:Tour .
+
+
+###  https://schema.org/TouristAttraction
+schema:TouristAttraction rdf:type owl:NamedIndividual .
+
+
+###  https://schema.org/TouristTrip
+schema:TouristTrip rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+ex:Art rdfs:label "Art" .
+
+
+ex:Tour rdfs:label "Tour" .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
