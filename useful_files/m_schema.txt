@@ -1,0 +1,90 @@
+[Ontology] events 【Schema】
+
+@prefix ex: <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Classes
+[Classes]
+ex:Event 【Class】  → Represents an event  
+ex:Calendar 【Class】  → Represents a calendar entry  
+ex:Location 【Class】  → Represents a location  
+ex:State 【Class】  → Represents the state of an event  
+ex:EventCategory 【Class】  → Represents a category of an event  
+
+# Object Properties
+[Relationships]
+ex:eventat 【ObjectProperty】 (ex:Location → ex:Event)  
+   - "Event is connected to Location entity. Each event must have a location"
+   - Example:  
+     ex:location ex:eventat ex:event .
+
+ex:eventon 【ObjectProperty】 (ex:Event → ex:Calendar)  
+   - "Event is connected to Calendar entity."
+   - Example:  
+     ex:calendar ex:eventon ex:event .
+
+ex:eventstate 【ObjectProperty】 (ex:Event → ex:State)  
+   - "An event has a status/state."
+
+ex:belongsToCategory 【ObjectProperty】 (ex:Event → ex:EventCategory)  
+   - "An event belongs to a category."
+   - Example:  
+     ex:event ex:belongsToCategory ex:eventcategory .
+
+# Datatype Properties
+[Attributes]
+ex:eventclassid 【DatatypeProperty】 (ex:Event → xsd:string)  
+   - "Unique identifier for an event."
+
+ex:eventname_it 【DatatypeProperty】 (ex:Event → xsd:string)  
+   - "Event name in Italian.  Each event must have a name"
+
+ex:eventdescr_it 【DatatypeProperty】 (ex:Event → xsd:string)  
+   - "Event description in Italian."
+
+ex:eventimage_url 【DatatypeProperty】 (ex:Event → xsd:string)  
+   - "URL of the event image."
+
+ex:calendarclassid 【DatatypeProperty】 (ex:Calendar → xsd:string)  
+   - "Unique identifier for a calendar entry."
+
+ex:day 【DatatypeProperty】 (ex:Calendar → xsd:date)  
+   - "Date of the event."
+
+ex:start_time 【DatatypeProperty】 (ex:Calendar → xsd:string)  
+   - "Event start time. Time format must be 00:00 "
+
+ex:end_time 【DatatypeProperty】 (ex:Calendar → xsd:string)  
+   - "Event end time. Time format must be 00:00 "
+
+ex:locationclassid 【DatatypeProperty】 (ex:Location → xsd:string)  
+   - "Unique identifier for a location."
+
+ex:address 【DatatypeProperty】 (ex:Location → xsd:string)  
+   - "Address of the location."
+
+ex:statecode 【DatatypeProperty】 (ex:State → xsd:string)  
+   - "Code representing the state of an event."
+
+ex:statename 【DatatypeProperty】 (ex:State → xsd:string)  
+   - "Name of the event state."
+   - Example:  ["eliminato", "attivo"]
+
+ex:eventcatclassid 【DatatypeProperty】 (ex:EventCategory → xsd:string)  
+   - "Unique identifier for an event category."
+
+ex:eventcatname_it 【DatatypeProperty】 (ex:EventCategory → xsd:string)  
+   - "Category name in Italian."
+   - Example: ["Anniversari e Commemorazioni","Arte e Cultura","Conferenze","Incontri Convegni Congressi","Mostre","Rassegna","Solidarietà",
+                "Visite guidate","Attività per bambini","Campi estivi ragazzi","Concerti","Feste","Festival","Fiere Mercati e Sagre","Manifestazioni sportive",
+                "Spettacoli","Spettacoli extra lirica in Arena","Turismo","Altro"]
+
+
+
+
+
