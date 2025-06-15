@@ -1,0 +1,160 @@
+# Prefixes
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+# Classes
+[Classes]
+Art 【Class】
+ArtCategory 【Class】
+Calendar 【Class】
+Event 【Class】
+EventCategory 【Class】
+Location 【Class】
+State 【Class】
+Tour 【Class】
+Type 【Class】
+NodeShape 【Class】
+Q1656682 【Class】
+Q570116 【Class】
+
+# Object Properties
+[Relationships]
+artstate 【ObjectProperty】 (ex:Art → ex:State)
+   - Example:
+     ex:art ex:artstate ex:state .
+
+belongsToCategory 【ObjectProperty】 (ex:Art → ex:ArtCategory)
+   - Example:
+     ex:art ex:belongsToCategory ex:artcategory .
+
+eventat 【ObjectProperty】 (ex:Location → ex:Event)
+   - Example:
+     ex:location ex:eventat ex:event .
+
+eventon 【ObjectProperty】 (ex:Calendar → ex:Event)
+   - Example:
+     ex:calendar ex:eventon ex:event .
+
+eventstate 【ObjectProperty】 (ex:Event → ex:State)
+   - Example:
+     ex:event ex:eventstate ex:state .
+
+hasCategory 【ObjectProperty】 (ex:ArtCategory → ex:Art)
+   - Example:
+     ex:artcategory ex:hasCategory ex:art .
+
+partOfTour 【ObjectProperty】 (ex:Art → ex:Tour)
+   - Example:
+     ex:art ex:partOfTour ex:tour .
+
+type 【ObjectProperty】 (ex:Tour → ex:Type)
+   - Example:
+     ex:tour ex:type ex:type .
+
+# Datatype Properties
+[Attributes]
+area_di_download 【DatatypeProperty】 (Art → string)
+
+artclassid 【DatatypeProperty】 (Art → string)
+   - Example: [201, 53, 58, 56, 110, 60, 50, 77, 57, 44]
+
+artdescr_it 【DatatypeProperty】 (Art → string)
+
+artimage_url 【DatatypeProperty】 (Art → string)
+   - Example: [https://turismo.comune.verona.it/cache/cfx_imagecr3/AEF5E973106CC49F82715BE5894DAF32.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/1804874DBD5BF57E00D97D3C72A06FDC.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/195773FC3A9D607B5418825DFE49F817.jpg, https://turismo.comune.verona.it/cache/cfx_imagecr3/DF4DA0C7EE62386EFDD2634685332A35.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/0A0559A63FC362056A9AE438F5EF13BF.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/331FA44C0E8EA7CB823CC685D599FA6C.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/534F29C51FE71E55D3EBB0EEB0DC9B68.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/3AB98114925C47AA40DB629AF6FE755F.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/22AF87D5754A5A2B303E3456400E04BC.png, https://turismo.comune.verona.it/cache/cfx_imagecr3/5A3DC4F82B5B456EC47759A76071B635.JPG]
+
+artname_it 【DatatypeProperty】 (Art → string)
+   - Example: [Museo di Storia Naturale, Biblioteca Capitolare, Palazzo della Ragione o del Comune, Piazza dei Signori o Piazza Dante, Torre del Gardello, Piazza Erbe, Castelvecchio, Piazza Bra, Palazzo del Capitanio o del Tribunale, Porta Borsari]
+
+open_time 【DatatypeProperty】 (Art → string)
+   - Example: [<p>aperto da luned&igrave; a gioved&igrave; dalle 9 alle 17<br />il sabato e la domenica dalle 14 alle 18<br />chiuso il venerd&igrave;</p>, mar-ven 9.30-12.30<br/><br/>sab 16.00-18.00 (con visita guidata)<br/><br/>dom 10.00-13.00 (con visita guidata)<br/><br/><br/>si consiglia di controllare il sito della biblioteca per possibili variazioni durante il periodo estivo, da martedì a venerdì dalle 10.00 alle 18.00<br/>sabato, domenica e festivi dalle 11.00 alle 19.00<br/><br/>la biglietteria chiude 45 minuti prima.<br/><br/>chiuso il lunedì, zona pedonale, mar-dom 8.30-19.30 <br/>lun 13.30-19.30, zona pedonale<br/>parzialmente libera al traffico<br/>no ZTL, , nov-feb feriale 10.00-13.00/13.30-17.00<br/><br/>nov-feb domenica e festività religiose 12.30-17.00<br/><br/>mar-ott feriale 8.30-18.00 <br/><br/>mar-ott domenica e festività religiose 12.30-18.00, Dall'11 maggio 2015 le attività del Centro Internazionale di Fotografia Scavi Scaligeri sono sospese per gli adeguamenti necessari in vista dei lavori di restauro del Palazzo del Capitanio., lun-ven 10.00-18.00<br/><br/>chiusura cassa 45' minuti prima<br/><br/>sabato e domenica 11.00-19.00<br/><br/>chiusura cassa 45' minuti prima]
+
+tickets 【DatatypeProperty】 (Art → string)
+   - Example: [<ul><li>intero: &euro; 4,50</li><li>ridotto gruppi, anziani (over 60) e studenti: &euro; 3,00</li><li>ridotto scuole/ragazzi 8-14 anni (solo accompagnati): &euro; 1,00</li><li>ingresso gratuito: anziani (over 65) residenti nel Comune di Verona - portatori di handicap e loro accompagnatori - bambini fino a 7 anni -&nbsp;con&nbsp;<a href="/nqcontent.cfm?a_id=38678">VeronaCard</a></li></ul>, , intero €6,00 <br/>ridotto €4,50 <br/>gruppi(min 15 pers) €4,50  <br/>scolaresche e bambini 8-14 anni €1,00<br/>gratuito 0-7 anni, intero €3,00<br/><br/>ridotto €2,00  <br/><br/>gruppi (min 20  pers) €2,00<br/><br/>scuole €1,00 <br/><br/>gratuità 0-11 anni<br/><br/>entrata libera per i residenti della diocesi, lunedi euro 5,00<br/><br/>da martedì a venerdì:<br/><br/>biglietto unico Torre dei Lamberti + Galleria d’Arte Moderna Achille Forti<br/>Intero: 8,00 € <br/>Ridotto* 5,00 € <br/>Scolaresche:1,00 € <br/><br/><br/><br/>*Hanno diritto al biglietto ridotto gruppi superiori a 15 persone; ragazzi dagli 8 ai 14 anni; studenti dai 14 ai 30 anni (con tessera studenti o libretto universitario); adulti oltre i 60 anni di età; possessori delle apposite convenzioni. <br/><br/>Gratuito per i bambini fino a 7 anni, residenti con più di 65 anni, portatori di handicap e accompagnatori, insegnanti accompagnatori di scolaresche (due per ogni classe indipendentemente dal numero di studenti), entrata libera, Fino alla conclusione dell'intervento di restauro, il biglietto di ingresso per la visita della sola cavea del Teatro è ridotto alla tariffa unica di € 1,00, intero €3,00<br/><br/>ridotto €2,00 <br/><br/>gruppi (min 20 pers) €2,00<br/><br/>scuole €1,00<br/><br/>0-11 anni gratuità <br/><br/>entrata libera per i residenti della diocesi, intero € 2,00<br/>la tariffa si intende comprensiva di salita e discesa<br/><br/>solo discesa € 1,00 (sola salita non consentita)<br/><br/>ridotto (under 10 e over 65) € 1,00<br/><br/>gruppi (min 15 pers) € 1,50 per pers, <ul><li>intero: € 4,00</li><li>ridotto gruppi, anziani (over 60) e studenti: € 2,50</li><li>ridotto scuole/ragazzi 8-14 anni (solo accompagnati): € 1,00</li><li>ingresso gratuito: anziani (over 65) residenti nel Comune di Verona - portatori di handicap e loro accompagnatori - bambini fino a 7 anni - con <a href="/nqcontent.cfm?a_id=38678">VeronaCard</a></li></ul>]
+
+artcatclassid 【DatatypeProperty】 (ArtCategory → string)
+   - Example: [1, 2, 3, 6, 5, 4]
+
+artcatname_it 【DatatypeProperty】 (ArtCategory → string)
+   - Example: [Chiese, Monumenti, Teatri o anfiteatri, Siti archeologici, Palazzi, torri e castelli, Musei e Centri Espositivi]
+
+calendarclassid 【DatatypeProperty】 (Calendar → string)
+   - Example: [49886_1447619620937, 48413_1466364718439, 49956_1448742839609, 50847_1465587181787, 44954_1460835098819, 44954_1460835098920, 44954_1460835099020, 50027_1449434046741, 44954_1460835099121, 44954_1460835099223]
+
+day 【DatatypeProperty】 (Calendar → date)
+   - Example: [2015-12-12, 2015-10-16, 2015-11-28, 2016-02-01, 2016-02-13, 2016-02-27, 2016-03-12, 2015-12-06, 2016-04-02, 2016-04-16]
+
+end_time 【DatatypeProperty】 (Calendar → string)
+   - Example: [00:00]
+
+start_time 【DatatypeProperty】 (Calendar → string)
+   - Example: [00:00]
+
+eventclassid 【DatatypeProperty】 (Event → string)
+   - Example: [11759, 11887, 12352, 12748, 13078, 13111, 13157, 13188, 13990, 14870]
+
+eventdescr_it 【DatatypeProperty】 (Event → string)
+
+eventimage_url 【DatatypeProperty】 (Event → string)
+   - Example: [http://portale.comune.verona.it/media/spettacolo/laltro_teatro_2015_16/balletto_civile_quadrata.jpg, http://portale.comune.verona.it/media/_Biblioteche/BPL/Eventi 2016/Juliet 2016/Juliet_140x140.png, http://portale.comune.verona.it/media/_ComVR/Cdr/RedazioneWeb/Immagini/Anteprime/GiornoMemoria_ant.jpg, http://portale.comune.verona.it/media/_ComVR/Cdr/Spettacoli/Amatoriali Camploy 2015-2016/Camploy_Amatoriali2015_2016_ant.jpg, http://portale.comune.verona.it/media/_Circoscrizioni/_Circ5/Operaf._2015.gif, http://portale.comune.verona.it/media/_ComVR/Cdr/RedazioneWeb/Immagini/Anteprime/theREALONES166x166_ant.jpg, http://portale.comune.verona.it/media/_ComVR/Cdr/RedazioneWeb/Immagini/Anteprime/GlobetrotterTour_ant.png, http://portale.comune.verona.it/media/_Biblioteche/Civica/Eventi/2010/marzo/ante_sanesi.jpg, http://portale.comune.verona.it/media/_ComVR/Cdr/Spettacoli/etv2015/immagini2015/mauroottolini.jpg, http://portale.comune.verona.it/media/_Circoscrizioni/_Circ7/Immagini/Foto/frutta_di_stagione.jpeg]
+
+eventname_it 【DatatypeProperty】 (Event → string)
+   - Example: [Ruggito, Juliet 2016: visual art, Giorno della Memoria 2017, Schweyk nella seconda guerra mondiale  -  al Teatro Camploy, Troppoforte 2015, The Real Ones - Teatro Romano, Harlem Globetrotters Italian Tour 2015, Poesia Primavera 2015, omaggio a Roberto Sanesi, Mauro Ottolini & Sousaphonix, La festa della Verza Michelina e dei prodotti della nostra terra - edizione 2015]
+
+eventcatclassid 【DatatypeProperty】 (EventCategory → string)
+   - Example: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10]
+
+eventcatname_it 【DatatypeProperty】 (EventCategory → string)
+   - Example: [Anniversari e Commemorazioni, Arte e Cultura, Conferenze, Incontri Convegni Congressi, Mostre, Rassegna, Solidarietà, Visite guidate, Attività per bambini, Campi estivi ragazzi]
+
+address 【DatatypeProperty】 (Location → string)
+   - Example: [Porta Leoni, Via Leoni - Verona, Biblioteca Civica - Via Cappello 43 - Verona, Palazzo della Ragione - Piazza dei Signori - Verona, Vicolo Pozzo, 1  Verona, Centro Internazionale di Fotografia Scavi Scaligeri - Cortile del Tribunale (Piazza Viviani) - Verona, Teatro Nuovo - Piazza Francesco Viviani 10 - Verona, Museo di Storia Naturale Palazzo Pompei - Lungadige Porta Vittoria 9 - Verona, Sala Renato Birolli - Via Macello 17 - Verona, Lungadige Porta Vittoria 9, Verona, Via Luigi da Porto 5, Verona]
+
+geom 【DatatypeProperty】 (Location → string)
+
+locationclassid 【DatatypeProperty】 (Location → string)
+   - Example: [6, 402360, 419680, 200, 450160, 452470, 454550, 461200, 461700, 462680]
+
+num 【DatatypeProperty】 (Location → integer)
+   - Example: [1, 0, 2, 3, 4, 5]
+
+statecode 【DatatypeProperty】 (State → string)
+   - Example: [02, 01]
+
+statename 【DatatypeProperty】 (State → string)
+   - Example: [eliminato, attivo]
+
+duration 【DatatypeProperty】 (Tour → decimal)
+   - Example: [4.0, 5.0, 8.0]
+
+geom_path 【DatatypeProperty】 (Tour → string)
+
+kml_path 【DatatypeProperty】 (Tour → string)
+
+length 【DatatypeProperty】 (Tour → decimal)
+   - Example: [3.0, 4.5, 5.5, 6.0]
+
+proximity_area 【DatatypeProperty】 (Tour → string)
+
+tourclassid 【DatatypeProperty】 (Tour → string)
+   - Example: [3, 11, 1, 2, 10]
+
+tourdescr_it 【DatatypeProperty】 (Tour → string)
+
+tourimage_url 【DatatypeProperty】 (Tour → string)
+   - Example: [https://turismo.comune.verona.it/cache/cfx_imagecr3/164A96D32BD2EF95F4CA742068DA0E74.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/69BA32FB0CA5B4B2B851E64D769A9D9F.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/EA7A0C2FE51F3DCE09799E2DF6250331.JPG, https://turismo.comune.verona.it/cache/cfx_imagecr3/18BC08C98658A8152642BCAA009BC200.jpg, https://turismo.comune.verona.it/cache/cfx_imagecr3/10160EB039F875F984F2BF3BC5FD16DD.JPG]
+
+tourname_it 【DatatypeProperty】 (Tour → string)
+   - Example: [Verona romana, Mezza giornata, Verona medievale, Verona rinascimentale, Una giornata]
+
+typecode 【DatatypeProperty】 (Type → string)
+   - Example: [storico, a tempo, a tema]
+
+typename 【DatatypeProperty】 (Type → string)
+   - Example: [storico, a tempo, a tema]
+
